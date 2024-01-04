@@ -28,6 +28,8 @@ export const getAllCourses = async () => {
   const toastId = toast.loading("Loading...")
   let result = []
   try {
+    const responseIP = await apiConnector("GET", "https://study-notion-backennd.onrender.com/api/whoami");
+    console.log("IP",responseIP);
     const response = await apiConnector("GET", GET_ALL_COURSE_API)
     if (!response?.data?.success) {
       throw new Error("Could Not Fetch Course Categories")
